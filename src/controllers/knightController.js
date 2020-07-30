@@ -6,9 +6,15 @@ const nextPosition = (req, res) => {
 
     const reqPosition = req.params.currentPosition;
 
-    const toSend = calculateNextPositions(reqPosition)
+    try {
+        const toSend = calculateNextPositions(reqPosition)
+        res.status(200).send(toSend);
 
-    res.send(toSend);
+    } catch (e) {
+        console.log(e.message)
+        res.status(400).send({Error: e.message});
+    }
+
 }
 
 module.exports = { nextPosition };
