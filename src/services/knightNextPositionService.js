@@ -1,30 +1,49 @@
-const boardPositionsService = require('./boardPositionsService.js')
 
-const {getBoardPositions} = boardPositionsService;
+const {getBoardPositions} = require('./boardPositionsService.js');
+const { positionValidator } = require('./positionValidator.js');
 
-const boardPositions = getBoardPositions()
+const calculateNextValidPositions = (currentPosition) => {
+    
+    if (positionValidator(currentPosition) != false) {
+        
+        const upperCurrentPosition = currentPosition.toUpperCase();
 
-const calculateNextPositions = (currentPosition) => {
+        const currentPositionLetter = upperCurrentPosition.slice(0,1);
+        const currentPositionNumber = parseInt(upperCurrentPosition.slice(1,2));
 
-    const upperCurrentPosition = currentPosition.toUpperCase()
+        const nextPositions = [];
+        const nextValidPositions = [];
 
-    if (upperCurrentPosition.length > 2) {
-        throw new Error('Not valid position: should have one letter and one number')
+        const  currentCode = currentPositionLetter.charCodeAt(0);
+
+        nextPositions.push(`${String.fromCharCode(currentCode-2)}${currentPositionNumber-1}`);
+        nextPositions.push(`${String.fromCharCode(currentCode-2)}${currentPositionNumber+1}`);
+        nextPositions.push(`${String.fromCharCode(currentCode-1)}${currentPositionNumber-2}`);
+        nextPositions.push(`${String.fromCharCode(currentCode-1)}${currentPositionNumber+2}`);
+        nextPositions.push(`${String.fromCharCode(currentCode+1)}${currentPositionNumber-2}`);
+        nextPositions.push(`${String.fromCharCode(currentCode+1)}${currentPositionNumber+2}`);
+        nextPositions.push(`${String.fromCharCode(currentCode+2)}${currentPositionNumber-1}`);
+        nextPositions.push(`${String.fromCharCode(currentCode+2)}${currentPositionNumber+1}`);
+
+
+        nextPositions.map(position => {
+            
+            const boardPositions = getBoardPositions();
+
+            const newPositionLetter = position.slice(0,1);
+            const newPositionNumber = parseInt(position.slice(1,2));
+
+            if(boardPositions.letters.includes(newPositionLetter) && boardPositions.numbers.includes(newPositionNumber)) {
+                nextValidPositions.push(position)
+            }
+
+        });
+
+        return {nextValidPositions};
+
+
     }
-
-    const currentPositionLetter = upperCurrentPosition.slice(0,1);
-    const currentPositionNumber = parseInt(upperCurrentPosition.slice(1,2));
-
-    if(!boardPositions.letters.includes(currentPositionLetter)) {
-        throw new Error('Not valid position: invalid letter');
-    }
-
-    if(!boardPositions.numbers.includes(currentPositionNumber)) {
-        throw new Error('Not valid position: invalid number');
-    }
-
-    return {currentPositionLetter, currentPositionNumber}
-    // return `Sua posição atual é ${upperCurrentPosition}`;
+    
 }
 
-module.exports = { calculateNextPositions };
+module.exports = { calculateNextValidPositions };

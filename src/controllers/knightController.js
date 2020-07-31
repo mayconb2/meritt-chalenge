@@ -1,14 +1,14 @@
 const knightNextPosition = require('../services/knightNextPositionService.js');
 
-const {calculateNextPositions} = knightNextPosition;
+const {calculateNextValidPositions} = knightNextPosition;
 
 const nextPosition = (req, res) => {
 
     const reqPosition = req.params.currentPosition;
 
     try {
-        const toSend = calculateNextPositions(reqPosition)
-        res.status(200).send(toSend);
+        const nextValidPositions = calculateNextValidPositions(reqPosition)
+        res.status(200).send(nextValidPositions);
 
     } catch (e) {
         console.log(e.message)

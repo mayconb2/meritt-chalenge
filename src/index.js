@@ -13,6 +13,6 @@ app.use('/knight', knightRouter);
 
 app.listen(PORT, () => {
 
-    console.log(`Aplicação iniciada na porta ${PORT}`)
+    console.log(`Application started on port ${PORT}`)
 
 });
