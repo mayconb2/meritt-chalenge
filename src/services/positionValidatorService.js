@@ -25,3 +25,4 @@ const positionValidator = (currentPosition) => {
 }
 
 module.exports = { positionValidator };
+    
