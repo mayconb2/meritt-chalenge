@@ -41,7 +41,6 @@ const calculateNextValidPositions = (currentPosition) => {
 
         return {nextValidPositions};
 
-
     }
     
 }

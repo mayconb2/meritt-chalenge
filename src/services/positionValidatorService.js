@@ -22,6 +22,7 @@ const positionValidator = (currentPosition) => {
         throw new Error('Not valid position: invalid number');
     }
 
+    return true;
 }
 
 module.exports = { positionValidator };
