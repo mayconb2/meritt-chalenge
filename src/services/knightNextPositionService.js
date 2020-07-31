@@ -1,6 +1,6 @@
 
 const {getBoardPositions} = require('./boardPositionsService.js');
-const { positionValidator } = require('./positionValidator.js');
+const { positionValidator } = require('./positionValidatorService.js');
 
 const calculateNextValidPositions = (currentPosition) => {
     
