@@ -34,7 +34,7 @@ $ git clone https://github.com/mayconb2/meritt-challenge.git
 
 ### Passo 2: instalando as dependências
 
-O clone feito do código fonte não traz todas as dependências do projeto. Para realizar a instalação, vá até a raiz do projeto, onde encontrase o arquivo package.json, e execute o seguinte comando:
+O clone feito do código fonte não traz todas as dependências do projeto. Para realizar a instalação, vá até a raiz do projeto, onde se encontra o arquivo package.json, e execute o seguinte comando:
 
 ```
 $ npm install
@@ -68,7 +68,7 @@ Application started on port 3000
 
 ## Fazendo a requisição para API
 
-Com o servidor de pé, você poderá fazer uma requisição do tipo GET para única rota disponível na API. Você usar algum programa da sua preferência, como o Postman ou Insomnia, ou utilizar um navegador.
+Com o servidor de pé, você poderá fazer uma requisição do tipo GET para única rota disponível na API. Você pode usar algum programa da sua preferência, como o Postman ou Insomnia, ou utilizar um navegador.
 
 A rota será:
 
